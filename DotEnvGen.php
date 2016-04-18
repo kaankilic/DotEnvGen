@@ -17,8 +17,8 @@ class DotEnvGen{
 			        $this->setField(trim($Split[0]),trim($Split[1]));
 		    	}
 		    }
+		    fclose($handle);
 		}
-		fclose($handle);
 	}
 	public function getFields(){
 		return $this->Fields;
