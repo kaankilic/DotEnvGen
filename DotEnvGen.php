@@ -9,15 +9,17 @@ class DotEnvGen{
 
 	}
 	public function parseExample(){
-		$handle = fopen(self::ExampleFile, "r");
-		if ($handle) {
-		    while (($line = fgets($handle)) !== false) {
-		    	if (strpos($line,"=")!==false) {
-			    	$Split = explode("=",$line);
-			        $this->setField(trim($Split[0]),trim($Split[1]));
-		    	}
-		    }
-		    fclose($handle);
+		if (file_exists(self::ExampleFile)) {
+			$handle = fopen(self::ExampleFile, "r");
+			if ($handle) {
+			    while (($line = fgets($handle)) !== false) {
+			    	if (strpos($line,"=")!==false) {
+				    	$Split = explode("=",$line);
+				        $this->setField(trim($Split[0]),trim($Split[1]));
+			    	}
+			    }
+			    fclose($handle);
+			}
 		}
 	}
 	public function getFields(){
